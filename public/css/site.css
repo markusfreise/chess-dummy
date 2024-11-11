@@ -1,0 +1,920 @@
+@import url(https://use.typekit.net/ooz3vyv.css);
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td, input, select {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* remember to define focus styles! */
+:focus {
+  outline: 0;
+}
+
+body {
+  line-height: 1;
+  color: black;
+  background: white;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+}
+
+blockquote, q {
+  quotes: "" "";
+}
+
+/*******************************************/
+/*
+/*  Mixins
+*/
+.shadow-inset {
+  box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+form p {
+  margin: 0;
+}
+
+label {
+  display: inline-block;
+}
+
+textarea,
+input[type=email],
+input[type=search],
+input[type=text] {
+  font-family: var(--ff-copy);
+  padding: 0.8em;
+  background: rgba(0, 0, 0, 0.1);
+  margin: 0;
+  width: 100%;
+  border: none;
+  font-size: 1em;
+  border-radius: var(--radius-small);
+}
+textarea:focus,
+input[type=email]:focus,
+input[type=search]:focus,
+input[type=text]:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+input[type=checkbox],
+input[type=radio],
+input[type=submit],
+input[type=button],
+select {
+  cursor: pointer;
+}
+
+.gform_wrapper {
+  margin-bottom: var(--m-vert);
+}
+.gform_wrapper .gform_fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: var(--gap);
+}
+.gform_wrapper .gform_fields > * {
+  grid-column: span 6;
+}
+.gform_wrapper .gform_fields .gfield--width-half {
+  grid-column: span 3;
+}
+.gform_wrapper .gform_fields .gfield--width-third {
+  grid-column: span 2;
+}
+.gform_wrapper .ginput_container {
+  margin: 0;
+}
+.gform_wrapper .gfield_label {
+  margin: 0.5em 0;
+}
+.gform_wrapper .gform_fields .gfield {
+  margin: 0 0 1em;
+}
+.gform_wrapper .hidden_label label {
+  display: none;
+}
+.gform_wrapper .hidden_label input {
+  margin-top: 0;
+}
+
+:root {
+  --c-pink: #ec44a8;
+  --c-corporate: #242424;
+  --c-orange: #e97e39;
+  --c-cyan: #1ea8df;
+  --c-weiss: #ffffff;
+  --c-copy: #242424;
+  --ff-copy: sans-serif;
+  --ff-head: sans-serif;
+  --ff-fixed: sans-serif;
+  --fs-small: 0.75em;
+  --fs-copy: 0.875rem;
+  --fs-large: 1.125rem;
+  --fs-hl-small: 1.125rem;
+  --fs-hl-medium: 1.625rem;
+  --fs-hl-large: 2rem;
+  --fs-medium: var(--fs-copy);
+  --max-width: calc(100vw - 4rem);
+  --width-margin: 2rem;
+  --article-width: var(--max-width);
+  --width-margin-article: calc(50vw - var(--article-width) * 0.5);
+  --gap: 0.7rem;
+  --m-vert: 4rem;
+  --m-vert-slim: 2rem;
+  --m-vert-2x: calc(2 * var(--m-vert));
+  --gap-2x: calc(2 * var(--gap));
+  --gap-3x: calc(3 * var(--gap));
+  --gap-4x: calc(4 * var(--gap));
+  --gap-6x: calc(6 * var(--gap));
+  --radius: 1.25rem;
+  --radius-small: 0.3125rem;
+  --shadow: 0px 25px 40px 0px rgba(0, 0, 0, 0.05);
+  --shadow-flat: 0px 2px 10px rgba(0, 0, 0, 0.15);
+}
+@media (min-width: 1024px) {
+  :root {
+    --fs-small: 0.875rem;
+    --fs-copy: 1rem;
+    --fs-large: 1.375rem;
+    --fs-hl-small: 1.375rem;
+    --fs-hl-medium: 2rem;
+    --fs-hl-large: 2.375rem;
+  }
+}
+@media (min-width: 1280px) {
+  :root {
+    --fs-small: 1rem;
+    --fs-copy: 1.125rem;
+    --fs-large: 1.5rem;
+    --fs-hl-small: 1.5rem;
+    --fs-hl-medium: 2.375rem;
+    --fs-hl-large: 2.625rem;
+  }
+}
+@media (min-width: 1440px) {
+  :root {
+    --fs-small: 1.125rem;
+    --fs-copy: 1.375rem;
+    --fs-large: 1.75rem;
+    --fs-hl-small: 1.75rem;
+    --fs-hl-medium: 2.625rem;
+    --fs-hl-large: 3.125rem;
+  }
+}
+@media (min-width: 1024px) {
+  :root {
+    --max-width: 960px;
+    --width-margin: calc(50vw - var(--max-width) * 0.5);
+  }
+}
+@media (min-width: 1280px) {
+  :root {
+    --max-width: 60rem;
+  }
+}
+@media (min-width: 1440px) {
+  :root {
+    --max-width: 72rem;
+  }
+}
+@media (min-width: 1280px) {
+  :root {
+    --article-width: 55rem;
+  }
+}
+@media (min-width: 1440px) {
+  :root {
+    --article-width: 1124px;
+  }
+}
+@media (min-width: 768px) {
+  :root {
+    --gap: 1rem;
+  }
+}
+@media (min-width: 1024px) {
+  :root {
+    --m-vert: 7.3125rem;
+    --m-vert-slim: 5.375rem;
+  }
+}
+
+div.gap {
+  width: var(--gap);
+}
+
+div.gap2x {
+  width: var(--gap-2x);
+}
+
+div.gap4x {
+  width: var(--gap-4x);
+}
+
+div.m-vert {
+  width: var(--m-vert);
+}
+
+div.m-vert-slim {
+  width: var(--m-vert-slim);
+}
+
+div.width-margin {
+  width: var(--width-margin);
+}
+
+div.article-width {
+  width: var(--article-margin);
+}
+
+.ty b,
+.ty strong,
+.typography b,
+.typography strong {
+  font-weight: bold;
+}
+.ty i,
+.ty em,
+.typography i,
+.typography em {
+  font-style: italic;
+}
+.ty blockquote,
+.ty pre,
+.typography blockquote,
+.typography pre {
+  padding: 1rem 0;
+}
+.ty .wp-block-quote,
+.ty blockquote,
+.typography .wp-block-quote,
+.typography blockquote {
+  padding: 0;
+  font-size: var(--fs-large);
+  margin: var(--gap-2x) 0;
+  border: none;
+}
+.ty .wp-block-quote p:last-child,
+.ty blockquote p:last-child,
+.typography .wp-block-quote p:last-child,
+.typography blockquote p:last-child {
+  margin-bottom: 0;
+}
+.ty .wp-block-pullquote,
+.typography .wp-block-pullquote {
+  padding: var(--gap-2x);
+  background: var(--c-copy);
+  color: white;
+  border: none;
+  text-align: left;
+  font-size: 1em;
+}
+@media (min-width: 1280px) {
+  .ty .wp-block-pullquote,
+  .typography .wp-block-pullquote {
+    transform: translateX(-4em);
+    width: 86%;
+  }
+}
+.ty .wp-block-pullquote blockquote,
+.typography .wp-block-pullquote blockquote {
+  font-size: 1em;
+  margin: 0;
+}
+.ty pre,
+.typography pre {
+  font-family: var(--ff-fixed);
+  line-height: 1.5;
+  background: black;
+  color: white;
+}
+.ty .p,
+.typography .p {
+  font-size: 1em;
+}
+.ty .p,
+.ty dd,
+.ty dt,
+.ty ul,
+.ty ol,
+.ty p,
+.typography .p,
+.typography dd,
+.typography dt,
+.typography ul,
+.typography ol,
+.typography p {
+  margin: 0 0 1em 0;
+  line-height: 1.7;
+}
+.ty .small,
+.typography .small {
+  font-size: 0.75em;
+}
+.ty .abstract,
+.typography .abstract {
+  font-weight: bold;
+}
+@media (min-width: 560px) {
+  .ty .abstract,
+  .typography .abstract {
+    font-size: var(--fs-large);
+  }
+}
+.ty p:last-child,
+.typography p:last-child {
+  margin-bottom: 0;
+}
+.ty ul:not(:first-child),
+.typography ul:not(:first-child) {
+  margin-top: var(--gap-2x);
+}
+.ty ul:not(:last-child),
+.typography ul:not(:last-child) {
+  margin-bottom: var(--gap-2x);
+}
+.ty ul li:not([class]),
+.ty ul li.wp-block-list-item,
+.typography ul li:not([class]),
+.typography ul li.wp-block-list-item {
+  padding: 0 0 0 1.2em;
+  margin-left: 0;
+  background: url("../images/Bullet.svg") no-repeat 0 0.4em;
+}
+.ty ul li:not([class]):not(:first-child),
+.ty ul li.wp-block-list-item:not(:first-child),
+.typography ul li:not([class]):not(:first-child),
+.typography ul li.wp-block-list-item:not(:first-child) {
+  margin-top: 1em;
+}
+.ty ul ul,
+.typography ul ul {
+  margin-left: 1em;
+}
+.ty ul li,
+.typography ul li {
+  list-style-type: none;
+}
+.ty ol li,
+.typography ol li {
+  list-style-type: decimal;
+  margin-left: 1em;
+  margin-bottom: 1em;
+}
+.ty ul,
+.ty ol,
+.typography ul,
+.typography ol {
+  margin: 1em 0;
+  line-height: 1.4;
+}
+.ty caption,
+.ty .h1,
+.ty h1,
+.ty h2,
+.ty h3,
+.ty h4,
+.ty h5,
+.typography caption,
+.typography .h1,
+.typography h1,
+.typography h2,
+.typography h3,
+.typography h4,
+.typography h5 {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  line-height: 1.2;
+  font-family: var(--ff-head);
+  font-weight: normal;
+}
+.ty caption a,
+.ty .h1 a,
+.ty h1 a,
+.ty h2 a,
+.ty h3 a,
+.ty h4 a,
+.ty h5 a,
+.typography caption a,
+.typography .h1 a,
+.typography h1 a,
+.typography h2 a,
+.typography h3 a,
+.typography h4 a,
+.typography h5 a {
+  text-decoration: none;
+}
+.ty caption:first-child,
+.ty .h1:first-child,
+.ty h1:first-child,
+.ty h2:first-child,
+.ty h3:first-child,
+.ty h4:first-child,
+.ty h5:first-child,
+.typography caption:first-child,
+.typography .h1:first-child,
+.typography h1:first-child,
+.typography h2:first-child,
+.typography h3:first-child,
+.typography h4:first-child,
+.typography h5:first-child {
+  margin-top: 0;
+}
+.ty .h1, .ty h1,
+.typography .h1,
+.typography h1 {
+  font-family: var(--ff-head);
+  font-size: var(--fs-hl-large);
+  text-transform: uppercase;
+}
+.ty .h2,
+.ty h2,
+.typography .h2,
+.typography h2 {
+  font-size: var(--fs-hl-medium);
+  text-transform: uppercase;
+}
+.ty caption,
+.ty .h3,
+.ty h3,
+.typography caption,
+.typography .h3,
+.typography h3 {
+  font-size: var(--fs-hl-small);
+}
+.ty .h4,
+.ty .h5,
+.ty h4,
+.ty h5,
+.typography .h4,
+.typography .h5,
+.typography h4,
+.typography h5 {
+  font-size: 1.2em;
+}
+.ty h1 + *,
+.ty h2 + *,
+.ty h3 + *,
+.ty .coltop + h1,
+.ty .coltop + h2,
+.ty .coltop + h3,
+.ty .coltop + h4,
+.ty .coltop + h5,
+.ty a[name=copytop] + h1,
+.ty a[name=copytop] + h2,
+.ty a[name=copytop] + h3,
+.ty a[name=copytop] + h4,
+.ty a[name=copytop] + h5,
+.typography h1 + *,
+.typography h2 + *,
+.typography h3 + *,
+.typography .coltop + h1,
+.typography .coltop + h2,
+.typography .coltop + h3,
+.typography .coltop + h4,
+.typography .coltop + h5,
+.typography a[name=copytop] + h1,
+.typography a[name=copytop] + h2,
+.typography a[name=copytop] + h3,
+.typography a[name=copytop] + h4,
+.typography a[name=copytop] + h5 {
+  margin-top: 0;
+}
+.ty a:not([class]),
+.typography a:not([class]) {
+  color: var(--c-rot);
+  text-decoration: underline;
+}
+.ty a:not([class]):hover,
+.typography a:not([class]):hover {
+  text-decoration: none;
+}
+.ty .wp-caption p,
+.typography .wp-caption p {
+  font-size: 0.8em;
+  margin: 0.5em 0 1em 0;
+}
+
+a.button,
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ff-head);
+  font-size: 1em;
+  padding: 0.6em 1em;
+  background: var(--c-corporate);
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: var(--radius-small);
+  cursor: pointer;
+}
+a.button:hover,
+.button:hover {
+  background: var(--c-orange);
+}
+a.button svg,
+.button svg {
+  margin-right: 0.5em;
+}
+
+#board {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+#board .row {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+}
+#board .row div {
+  width: 100%;
+  padding-bottom: 100%;
+}
+#board .row div.black {
+  background: black;
+}
+#board .piece {
+  position: absolute;
+  width: 12.5%;
+  padding-bottom: 12.5%;
+  transition: all 0.5s;
+  opacity: 1;
+}
+#board .piece img {
+  width: 80%;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+#board .pos_a_1 {
+  position: absolute;
+  left: 0%;
+  top: 87.5%;
+}
+#board .pos_b_1 {
+  position: absolute;
+  left: 12.5%;
+  top: 87.5%;
+}
+#board .pos_c_1 {
+  position: absolute;
+  left: 25%;
+  top: 87.5%;
+}
+#board .pos_d_1 {
+  position: absolute;
+  left: 37.5%;
+  top: 87.5%;
+}
+#board .pos_e_1 {
+  position: absolute;
+  left: 50%;
+  top: 87.5%;
+}
+#board .pos_f_1 {
+  position: absolute;
+  left: 62.5%;
+  top: 87.5%;
+}
+#board .pos_g_1 {
+  position: absolute;
+  left: 75%;
+  top: 87.5%;
+}
+#board .pos_h_1 {
+  position: absolute;
+  left: 87.5%;
+  top: 87.5%;
+}
+#board .pos_a_2 {
+  position: absolute;
+  left: 0%;
+  top: 75%;
+}
+#board .pos_b_2 {
+  position: absolute;
+  left: 12.5%;
+  top: 75%;
+}
+#board .pos_c_2 {
+  position: absolute;
+  left: 25%;
+  top: 75%;
+}
+#board .pos_d_2 {
+  position: absolute;
+  left: 37.5%;
+  top: 75%;
+}
+#board .pos_e_2 {
+  position: absolute;
+  left: 50%;
+  top: 75%;
+}
+#board .pos_f_2 {
+  position: absolute;
+  left: 62.5%;
+  top: 75%;
+}
+#board .pos_g_2 {
+  position: absolute;
+  left: 75%;
+  top: 75%;
+}
+#board .pos_h_2 {
+  position: absolute;
+  left: 87.5%;
+  top: 75%;
+}
+#board .pos_a_3 {
+  position: absolute;
+  left: 0%;
+  top: 62.5%;
+}
+#board .pos_b_3 {
+  position: absolute;
+  left: 12.5%;
+  top: 62.5%;
+}
+#board .pos_c_3 {
+  position: absolute;
+  left: 25%;
+  top: 62.5%;
+}
+#board .pos_d_3 {
+  position: absolute;
+  left: 37.5%;
+  top: 62.5%;
+}
+#board .pos_e_3 {
+  position: absolute;
+  left: 50%;
+  top: 62.5%;
+}
+#board .pos_f_3 {
+  position: absolute;
+  left: 62.5%;
+  top: 62.5%;
+}
+#board .pos_g_3 {
+  position: absolute;
+  left: 75%;
+  top: 62.5%;
+}
+#board .pos_h_3 {
+  position: absolute;
+  left: 87.5%;
+  top: 62.5%;
+}
+#board .pos_a_4 {
+  position: absolute;
+  left: 0%;
+  top: 50%;
+}
+#board .pos_b_4 {
+  position: absolute;
+  left: 12.5%;
+  top: 50%;
+}
+#board .pos_c_4 {
+  position: absolute;
+  left: 25%;
+  top: 50%;
+}
+#board .pos_d_4 {
+  position: absolute;
+  left: 37.5%;
+  top: 50%;
+}
+#board .pos_e_4 {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+#board .pos_f_4 {
+  position: absolute;
+  left: 62.5%;
+  top: 50%;
+}
+#board .pos_g_4 {
+  position: absolute;
+  left: 75%;
+  top: 50%;
+}
+#board .pos_h_4 {
+  position: absolute;
+  left: 87.5%;
+  top: 50%;
+}
+#board .pos_a_5 {
+  position: absolute;
+  left: 0%;
+  top: 37.5%;
+}
+#board .pos_b_5 {
+  position: absolute;
+  left: 12.5%;
+  top: 37.5%;
+}
+#board .pos_c_5 {
+  position: absolute;
+  left: 25%;
+  top: 37.5%;
+}
+#board .pos_d_5 {
+  position: absolute;
+  left: 37.5%;
+  top: 37.5%;
+}
+#board .pos_e_5 {
+  position: absolute;
+  left: 50%;
+  top: 37.5%;
+}
+#board .pos_f_5 {
+  position: absolute;
+  left: 62.5%;
+  top: 37.5%;
+}
+#board .pos_g_5 {
+  position: absolute;
+  left: 75%;
+  top: 37.5%;
+}
+#board .pos_h_5 {
+  position: absolute;
+  left: 87.5%;
+  top: 37.5%;
+}
+#board .pos_a_6 {
+  position: absolute;
+  left: 0%;
+  top: 25%;
+}
+#board .pos_b_6 {
+  position: absolute;
+  left: 12.5%;
+  top: 25%;
+}
+#board .pos_c_6 {
+  position: absolute;
+  left: 25%;
+  top: 25%;
+}
+#board .pos_d_6 {
+  position: absolute;
+  left: 37.5%;
+  top: 25%;
+}
+#board .pos_e_6 {
+  position: absolute;
+  left: 50%;
+  top: 25%;
+}
+#board .pos_f_6 {
+  position: absolute;
+  left: 62.5%;
+  top: 25%;
+}
+#board .pos_g_6 {
+  position: absolute;
+  left: 75%;
+  top: 25%;
+}
+#board .pos_h_6 {
+  position: absolute;
+  left: 87.5%;
+  top: 25%;
+}
+#board .pos_a_7 {
+  position: absolute;
+  left: 0%;
+  top: 12.5%;
+}
+#board .pos_b_7 {
+  position: absolute;
+  left: 12.5%;
+  top: 12.5%;
+}
+#board .pos_c_7 {
+  position: absolute;
+  left: 25%;
+  top: 12.5%;
+}
+#board .pos_d_7 {
+  position: absolute;
+  left: 37.5%;
+  top: 12.5%;
+}
+#board .pos_e_7 {
+  position: absolute;
+  left: 50%;
+  top: 12.5%;
+}
+#board .pos_f_7 {
+  position: absolute;
+  left: 62.5%;
+  top: 12.5%;
+}
+#board .pos_g_7 {
+  position: absolute;
+  left: 75%;
+  top: 12.5%;
+}
+#board .pos_h_7 {
+  position: absolute;
+  left: 87.5%;
+  top: 12.5%;
+}
+#board .pos_a_8 {
+  position: absolute;
+  left: 0%;
+  top: 0%;
+}
+#board .pos_b_8 {
+  position: absolute;
+  left: 12.5%;
+  top: 0%;
+}
+#board .pos_c_8 {
+  position: absolute;
+  left: 25%;
+  top: 0%;
+}
+#board .pos_d_8 {
+  position: absolute;
+  left: 37.5%;
+  top: 0%;
+}
+#board .pos_e_8 {
+  position: absolute;
+  left: 50%;
+  top: 0%;
+}
+#board .pos_f_8 {
+  position: absolute;
+  left: 62.5%;
+  top: 0%;
+}
+#board .pos_g_8 {
+  position: absolute;
+  left: 75%;
+  top: 0%;
+}
+#board .pos_h_8 {
+  position: absolute;
+  left: 87.5%;
+  top: 0%;
+}
+#board .pos_x_x {
+  transition: all 2.5s;
+  transform: rotate(1440deg);
+  left: 125%;
+  top: -125%;
+}
+
+#input {
+  padding: 1em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1em;
+}
+
+/*# sourceMappingURL=site.css.map*/

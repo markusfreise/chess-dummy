@@ -1,0 +1,134 @@
+header#header {
+    display: flex;
+    flex-direction: column-reverse;
+
+    a {
+        text-decoration: none;
+        color: var(--ff-copy);
+    }
+
+    &>div {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+
+    nav {
+        width: 100%;
+
+        &>ul {
+            display: flex;
+            justify-content: flex-end;
+
+            &>li {
+                position: relative;
+
+                &>ul {
+                    position: absolute;
+                    left: 0;
+                    top: 1em;
+                    display: none;
+                }
+
+                &:hover {
+                    &>ul {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+
+    #mobile_menu {
+        @media(min-width: 768px){
+            display: none;
+        }
+        position: fixed;
+        background-color: white;
+        z-index: 2086;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        padding: var(--gap-3x);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.4em;
+        transform: translateY(-100%);
+        transition: transform 800ms;
+        overflow: auto;
+        &.open {
+            transition: transform 800ms;
+            transform: translateY(0);
+        }
+        &>div {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            &>div>ul,
+            &>ul {
+                &>li {
+                    margin: 1em 0;
+                    &.kontakt,
+                    &.contact {
+                        font-weight: bold;
+                    }
+                }
+            }
+            .footer {
+                font-size: 0.86em;
+            }
+        }
+    }
+
+    #trigger {
+        @media(min-width: 768px){
+            display: none;
+        }
+        cursor: pointer;
+        position: fixed;
+        right: var(--gap);
+        top: var(--gap);
+        z-index: 2089;
+        width: 36px;
+        height: 26px;
+        &>span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: black;
+            position: absolute;
+            left: 0;
+            &.ff1 {
+                top: 0;
+            }
+            &.ff2 {
+                top: 50%;
+                transform: translateY(-1px);
+            }
+            &.ff3 {
+                bottom: 0;
+            }
+        }
+        &.open {
+            &>span {
+                &.ff1 {
+                    top: 50%;
+                    transform: translateY(-50%) rotate(45deg);
+                }
+                &.ff2 {
+                    opacity: 0;
+                }
+                &.ff3 {
+                    top: 50%;
+                    transform: translateY(-50%) rotate(-45deg);
+                }
+            }
+        }
+    }
+
+}

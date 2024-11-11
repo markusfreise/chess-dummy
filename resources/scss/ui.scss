@@ -1,0 +1,21 @@
+a.button,
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--ff-head);
+    font-size: 1em;
+    padding: 0.6em 1em;
+    background: var(--c-corporate);
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: var(--radius-small);
+    cursor: pointer;
+    &:hover {
+        background: var(--c-orange);
+    }
+    svg {
+        margin-right: 0.5em;
+    }
+}

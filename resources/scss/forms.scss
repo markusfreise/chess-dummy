@@ -1,0 +1,80 @@
+
+form p {
+	margin: 0;
+}
+
+label {
+	display: inline-block;
+}
+
+textarea,
+input[type='email'],
+input[type='search'],
+input[type='text'] {
+	font-family: var(--ff-copy);
+	padding: 0.8em;
+	background: rgba(0,0,0,0.1);
+	margin: 0;
+	width: 100%;
+	border: none;
+	font-size: 1em;
+	border-radius: var(--radius-small);
+	&:focus {
+		outline: none;
+		box-shadow: 0 0 0 2px var(--color-primary);
+	}
+}
+
+input[type='checkbox'],
+input[type='radio'],
+input[type='submit'],
+input[type='button'],
+select {
+	cursor: pointer;
+}
+
+.gform_wrapper {
+	margin-bottom: var(--m-vert);
+
+	.gform_fields {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+		gap: var(--gap);
+
+		&>* {
+			grid-column: span 6;
+		}
+
+		.gfield--width-half {
+			grid-column: span 3;
+		}
+
+		.gfield--width-third {
+			grid-column: span 2;
+		}
+	}
+
+	.ginput_container {
+		margin: 0;
+	}
+
+	.gfield_label {
+		margin: 0.5em 0;
+	}
+
+	.gform_fields {
+		.gfield {
+			margin: 0 0 1em;
+		}
+	}
+
+	.hidden_label {
+		label {
+			display: none;
+		}
+
+		input {
+			margin-top: 0;
+		}
+	}
+}

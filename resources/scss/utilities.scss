@@ -1,0 +1,108 @@
+.pr {
+    position: relative;
+
+    &.pa1 {
+        width: 100%;
+        padding-bottom: 100%;
+
+        &.wide {
+            padding-bottom: 56%;
+        }
+    }
+}
+
+.pa {
+    position: absolute;
+
+    &.l0 {
+        left: 0;
+    }
+
+    &.t0 {
+        top: 0;
+    }
+
+    &.r0 {
+        right: 0;
+    }
+
+    &.b0 {
+        bottom: 0;
+    }
+}
+
+.pa1 {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    &.of {
+        object-fit: cover;
+    }
+}
+
+.fxc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fxsb {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &.afs {
+        align-items: flex-start;
+    }
+
+    &.afe {
+        align-items: flex-end;
+    }
+}
+
+.txc {
+    text-align: center;
+}
+
+.hideMove {
+    position: fixed;
+    top: -5000px;
+}
+
+.clear {
+    clear: both;
+}
+
+.printonly {
+    display: none;
+}
+
+.wp-caption,
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.blur-50 {
+    -webkit-filter: url("#sharpBlur");
+    filter: url("#sharpBlur");
+}
+
+.hideSvgSoThatItSupportsFirefox {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
